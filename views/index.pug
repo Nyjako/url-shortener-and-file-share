@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  link(rel="stylesheet", href="stylesheets/style.css")
+  include includes/bubble_bg.pug
+  
+  .container-bg#container-bg
+  .container#container
+    h1 URL shortener and file uploader
+    .spacer
+    h2 Paste the URL to be shortened
+    form(action="/add_url", method="get").shortener-form
+      input(type="url", name="url_text", required).disable-select
+      button(type="submit") Submit
+
+    .spacer
+    h2 Upload file to server
+    h3 (File neds to be smaller than 100mb)
+    form.box(method='post' action='' enctype='multipart/form-data').upload-form
+      label(for="upload").file-upload
+        .upload-info#upload-info Click to select file
+        input(type='file' name='file', required)#upload
+      button(type="submit").file-submit Submit
+
+  script(src="javascripts/script.js")
