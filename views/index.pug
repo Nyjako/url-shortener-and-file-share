@@ -9,8 +9,8 @@ block content
     h1 URL shortener and file uploader
     .spacer
     h2 Paste the URL to be shortened
-    form(action="/add_url", method="get").shortener-form
-      input(type="url", name="url_text", required).disable-select
+    form(action="/addurl", method="post").shortener-form
+      input(type="url", name="url", required).disable-select
       button(type="submit") Submit
 
     .spacer
