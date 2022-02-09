@@ -19,6 +19,7 @@ var resultRouter = require('./routes/result')(config);
 var add_urlRouter = require('./routes/add_url')(config, db);
 var url = require('./routes/url')(config, db);
 var goto_urlRouter = require('./routes/goto_url');
+var add_file = require('./routes/add_file')(config, db);
 
 
 var app = express();
@@ -41,6 +42,7 @@ app.use('/result', resultRouter);
 app.use('/addurl', add_urlRouter);
 app.use('/url/*', goto_urlRouter);
 app.use('/url', url);
+app.use('/add-file', add_file);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

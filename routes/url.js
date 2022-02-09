@@ -13,7 +13,7 @@ function fill_data(data, db) {
                 res.redirect(docs[0].url)
             }
             else if (docs[0].type == "file") {
-                res.render('wrong', {msg: "Fiels are not supported yet"});
+                res.download(docs[0].path, docs[0].originalname)
             }
         });
     });

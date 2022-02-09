@@ -11,7 +11,7 @@ function fill_data(data, db) {
                 res.render('wrong', {msg: "Something went wrong while checking for url in db."})
             }
             else if (docs.length > 0) {
-                res.render('wrong', {msg: "Url already exist in database."})
+                res.render('wrong', {msg: `Url already exist in database. URL: ${req.get('host')}/url/${docs[0]._id}`})
             }
             else {
                 db.insert({url: url, type: 'link'}, function (err, newDoc) {
