@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  link(rel="stylesheet", href="stylesheets/style.css")
+  include includes/bubble_bg.pug
+  
+  .container-bg#container-bg
+  .container#container
+    h1 URL shortener and file uploader
+    .spacer
+    h2 Your link
+    .shortener-form
+      input(type="url", name="url_text", readonly="readonly", value=url, onclick="copy_result();").disable-select#result
+      button(onclick="copy_result();") Copy
+
+  script(src="javascripts/script.js")
