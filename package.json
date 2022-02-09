@@ -12,9 +12,7 @@
     "dev": "nodemon -e js,json -w bin/www -w app -w config -w routes -w app.js -i node_modules npm start"
   },
   "dependencies": {
-    "bcrypt": "^5.0.1",
     "cookie-parser": "~1.4.4",
-    "cryptr": "^6.0.2",
     "d3": "^7.3.0",
     "debug": "~2.6.9",
     "express": "~4.16.1",

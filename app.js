@@ -7,21 +7,19 @@ var logger = require('morgan');
 const fs = require('fs');
 const Datastore = require("nedb");
 const config = require('./config/config.json');
-const bcrypt = require('bcrypt');
-const salt = bcrypt.genSaltSync( config.salt_rounds );
 
 if (!fs.existsSync('./database')) {
   fs.mkdirSync('./database');
 }
 
 const db = {
-  urls:  new Datastore({ filename: "./database/urls.db", autoload: true, timestampData: true }),
+  urls:  new Datastore({ filename: "./database/urls.db", autoload: true }),
   files: new Datastore({ filename: "./database/files.db", autoload: true, timestampData: true })
 };
 
-var indexRouter = require('./routes/index')(config);
-var usersRouter = require('./routes/users');
-
+var indexRouter  = require('./routes/index')(config);
+var resultRouter = require('./routes/result')(config);
+var add_urlRouter = require('./routes/add_url')(config, db);
 
 
 var app = express();
@@ -40,7 +38,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules/d3/dist'))); // D3
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/result', resultRouter);
+app.use('/addurl', add_urlRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

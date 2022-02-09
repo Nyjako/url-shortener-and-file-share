@@ -10,3 +10,7 @@ function change_sizes() {
 }
 
 change_sizes();
+
+function copy_result() {
+    console.log("Hello There");
+}
